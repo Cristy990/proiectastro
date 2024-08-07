@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Snake";
+
+---
+<BaseLayout pageTitle={pageTitle}>
+  <h2>Un joculet cinstit cu javascript urmarind acest <a href='https://www.youtube.com/watch?v=Je0B3nHhKmM'>tutorial</a></h2>
+  
+  <div id="gameContainer">
+
+    <canvas id="gameBoard" width="500" height="500"></canvas>
+
+    <div id="scoreText">0</div>
+
+    <button id="resetBtn">Reset</button>
+
+</div>
+<script> 
+    import "../scripts/snake.js";
+</script>
+</BaseLayout>

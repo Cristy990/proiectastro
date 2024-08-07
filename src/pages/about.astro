@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "Despre mine";
+const happy = true;
+const finished = true;
+const goal = 3;
+
+const identity = {
+  firstName: "Cris",
+  country: "Romania",
+  occupation: "Diverse",
+  hobbies: ["fotografia", "cititul", "gatitul", "fotbalul"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Photoshop", "Astro", "Illustrator"];
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
+---
+
+<style define:vars={{ skillColor, fontWeight, textCase }}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+</style>
+
+<BaseLayout pageTitle={pageTitle}>
+  <h2>... si despre acest site realizat cu Astro</h2>
+
+  <p>
+    Am realizat acest site urmarind tutorialul <a href="https://astro.build/">Astro </a>
+    
+  </p>
+
+  <p>
+    Pe masura ce imi dezvolt cunostintele, voi continua sa imbunatatesc acest site.
+  </p>
+
+  {happy && <p>Sunt destul de entuziasmat sa invat acest framework</p>}
+
+  {finished && <p>Am terminat tutorialul!</p>}
+
+  {
+    goal === 3 ? (
+      <p>Mi-am propus sa finalizez acest tutorial in 3 zile.</p>
+    ) : (
+      <p>Am depasit termenul alocat pentru finalizarea tutorialului</p>
+    )
+  }
+
+  <p>Cateva lucruri despre mine:</p>
+  <ul>
+    <li>Numele meu este {identity.firstName}.</li>
+    <li>Locuiesc in {identity.country} si ma ocup cu {identity.occupation}.</li>
+    {
+      identity.hobbies.length >= 2 && (
+        <li>
+          Doua dintre hobby-urile mele sunt: {identity.hobbies[0]} si {identity.hobbies[1]}
+        </li>
+      )
+    }
+  </ul>
+  <p>Ma pricep la urmatoarele:</p><p></p><ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
+</BaseLayout>
